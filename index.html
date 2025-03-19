@@ -9,16 +9,40 @@
         /* Body Background */
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            background: linear-gradient(135deg, #b02c84, #de9d72);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
         }
 
-       
+        /* Header */
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Book Container */
         .book-container {
             position: relative;
             text-align: center;
@@ -26,7 +50,7 @@
             border-radius: 20px;
         }
 
-       
+        /* Book and Pages */
         .book {
             width: 350px;
             height: 450px;
@@ -35,7 +59,6 @@
             display: inline-block;
         }
 
-       
         .page {
             position: absolute;
             width: 100%;
@@ -70,7 +93,7 @@
             color: gray;
         }
 
-       
+        /* Buttons */
         .buttons {
             margin-top: 20px;
         }
@@ -84,29 +107,29 @@
             transition: background-color 0.5s ease;
         }
 
-        
+        /* Page-specific styles */
         #page1 {
-            background: linear-gradient(135deg, #353536, #0c04f4);
+            background: linear-gradient(135deg, #4c3098, #01001c);
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             border-top-left-radius: 0%;
             border-bottom-left-radius: 0%;
-            border-right: solid 4px  #9cd8f7;
-            border-bottom: solid 4px #9cd8f7;
+            border-right: solid 3px  #6a6b6b;
+            border-bottom: solid 3px #6a6b6b;
         }
 
         .cover-title {
             font-size: 2.5rem;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgb(7, 7, 7);
-            color: #3c9750;
+            color: #36c2b7;
         }
 
         .cover-subtitle {
             font-size: 1.2rem;
-            color: #496e7a;
+            color: #3b909d;
             margin-top: 10px;
             text-shadow: 1px 1px 2px rgb(16, 0, 0);
         }
@@ -142,14 +165,14 @@
             background: linear-gradient(135deg, #c2d1fb, #e9a4fa);
         }
 
-       
+        /* Hover Effects */
         .page:hover {
             transform: scale(1.02);
             transition: transform 0.3s ease;
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
         }
 
-       
+        /* Cards */
         .card {
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
@@ -164,7 +187,7 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-       
+        /* Links */
         .links a {
             display: block;
             margin: 5px;
@@ -178,7 +201,7 @@
             text-decoration: underline;
         }
 
-       
+        /* Form */
         .book-container form input,
         .book-container form textarea {
             width: 100%;
@@ -213,15 +236,17 @@
 </head>
 <body>
 
+<header>
+   BookShow 📖
+</header>
+
 <div class="book-container">
-    <h2 class="mb-3">📖 Flipbook</h2>
     <div class="book">
         <!-- Cover Page -->
         <div class="page" id="page1" style="z-index: 5;">
-            <div class="cover-title">The Adventure Begins</div>
+            <div class="cover-title">The Adventure Begins</div> <br>
             <div class="cover-subtitle">A Journey into the Unknown</div>
-            <div class="cover-author">By John Doe</div>
-            <div class="page-footer">Page 1</div>
+            <div class="page-footer">Page 1 📖</div>
         </div>
 
         <!-- Description Page -->
@@ -250,9 +275,9 @@
         <div class="page" id="page4" style="z-index: 2;">
             <h3>Buy This Book</h3>
             <div class="links">
-                <a href="https://www.amazon.com" target="_blank" class="card">Amazon</a>
-                <a href="https://www.flipkart.com" target="_blank" class="card">Flipkart</a>
-                <a href="https://www.barnesandnoble.com" target="_blank" class="card">Barnes & Noble</a>
+                <a href="https://www.amazon.com" target="_blank" rel="noopener" class="card">Amazon</a>
+                <a href="https://www.flipkart.com" target="_blank" rel="noopener" class="card">Flipkart</a>
+                <a href="https://www.barnesandnoble.com" target="_blank" rel="noopener" class="card">Barnes & Noble</a>
             </div>
             <div class="page-footer">Page 4</div>
         </div>
@@ -270,10 +295,14 @@
     </div>
 
     <div class="buttons">
-        <button class="btn btn-primary me-2" onclick="prevPage()" id="nextBtn">⬅ </button>
-        <button class="btn btn-success" onclick="nextPage()">➡</button>
+        <button class="btn btn-primary me-2" onclick="prevPage()" id="nextBtn">⬅📖FlipBack </button>
+        <button class="btn btn-success" onclick="nextPage()">FlipUp📖➡</button>
     </div>
 </div>
+
+<footer>
+    &copy; 2025 All rights reserved 📖
+</footer>
 
 <script>
     let currentPage = 1;
@@ -295,11 +324,6 @@
             document.getElementById("page" + currentPage).classList.add("flipped");
             currentPage++;
         }
-        let nextBtn=document.getElementById("nextBtn");
-        let page5=document.getElementById("page5");
-
-        
-
     }
 
     function prevPage() {
